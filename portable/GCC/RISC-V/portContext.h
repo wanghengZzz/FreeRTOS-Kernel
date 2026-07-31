@@ -94,9 +94,10 @@
 
         /*
          * Reserve space at the beginning of the FPU context block for:
-         * 1. The FCSR (Floating-Point Control and Status Register).
-         * 2. Padding to ensure proper memory/stack alignment (8-byte alignment for
-         *    RV32D, and 16-byte stack alignment mandated by the RISC-V ABI for RV64).
+         * 1. The FCSR (one portWORD_SIZE slot).
+         * 2. Padding (one portWORD_SIZE slot) to align the FP registers:
+         *    - RV32: 8-byte boundary for double-precision registers.
+         *    - RV64: 16-byte boundary mandated by the RISC-V ABI.
          */
         #define portFPU_REG_OFFSET( regIndex )  ( ( 2 * portWORD_SIZE ) + ( regIndex * portFPU_REG_SIZE ) )
         #define portFPU_CONTEXT_SIZE            ( portFPU_REG_SIZE * portFPU_REG_COUNT )
