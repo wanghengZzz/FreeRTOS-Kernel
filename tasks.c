@@ -7979,7 +7979,7 @@ TickType_t uxTaskResetEventItemValue( void )
                 *pulNotificationValue = pxCurrentTCB->ulNotifiedValue[ uxIndexToWaitOn ];
             }
 
-            /* If ucNotifyValue is set then either the task never entered the
+            /* If ucNotifyState is set then either the task never entered the
              * blocked state (because a notification was already pending) or the
              * task unblocked because of a notification.  Otherwise the task
              * unblocked because of a timeout. */
@@ -8849,7 +8849,7 @@ STATIC void prvAddCurrentTaskToDelayedList( TickType_t xTicksToWait,
  * This is the kernel provided implementation of vApplicationGetIdleTaskMemory()
  * to provide the memory that is used by the Idle task. It is used when
  * configKERNEL_PROVIDED_STATIC_MEMORY is set to 1. The application can provide
- * it's own implementation of vApplicationGetIdleTaskMemory by setting
+ * its own implementation of vApplicationGetIdleTaskMemory by setting
  * configKERNEL_PROVIDED_STATIC_MEMORY to 0 or leaving it undefined.
  */
     void vApplicationGetIdleTaskMemory( StaticTask_t ** ppxIdleTaskTCBBuffer,
@@ -8890,7 +8890,7 @@ STATIC void prvAddCurrentTaskToDelayedList( TickType_t xTicksToWait,
  * This is the kernel provided implementation of vApplicationGetTimerTaskMemory()
  * to provide the memory that is used by the Timer service task. It is used when
  * configKERNEL_PROVIDED_STATIC_MEMORY is set to 1. The application can provide
- * it's own implementation of vApplicationGetTimerTaskMemory by setting
+ * its own implementation of vApplicationGetTimerTaskMemory by setting
  * configKERNEL_PROVIDED_STATIC_MEMORY to 0 or leaving it undefined.
  */
     void vApplicationGetTimerTaskMemory( StaticTask_t ** ppxTimerTaskTCBBuffer,
